@@ -54,6 +54,9 @@ def slack():
         if eki_from is None or eki_to is None:
             return {"text": "Either one is blank"}
 
+        if eki_from == eki_to:
+            return {"text": "The same station name is specified"}
+
         # get eki info
         response = searchCourse(eki_from, eki_to)
         if response.status_code != 200:
@@ -278,8 +281,10 @@ def createMsg(resp_json):
         msg_list.append("には")
         msg_list.append(to_time)
         msg_list.append("に")
-        msg_list.append(to_train_name)
-        msg_list.append("にて到着します。")
+        if from_train_name != to_train_name:
+            msg_list.append(to_train_name)
+            msg_list.append("にて")
+        msg_list.append("到着します。")
         msg_list.append("片道")
         msg_list.append(fare_msg)
         msg_list.append("円で")
