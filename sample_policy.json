@@ -1,0 +1,44 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeNetworkInterfaces"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow",
+      "Sid": "86fe54fb08d14185b4acf13f3f4f4795"
+    },
+    {
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow",
+      "Sid": "43fe09ce77a74f81be2c1bd9f3c037fb"
+    },
+    {
+      "Action": [
+        "polly:SynthesizeSpeech"
+      ],
+      "Resource": "*",
+      "Effect": "Allow",
+      "Sid": "Stmt1481871014952"
+    },
+    {
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:*",
+      "Effect": "Allow"
+    }
+  ]
+}
